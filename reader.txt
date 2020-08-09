@@ -1,0 +1,33 @@
+zCore:
+
+UnityVrInput.ClickButton = (int m) =>{
+                   UInfo zinfo = new UInfo();                  
+                  bool bo =_zCore.IsTargetButtonPressed(ZCore.TargetType.Primary, m);
+                  zinfo.id = m;
+                  zinfo.down = bo;
+                  return zinfo;
+              };
+ UnityVrInput.UPosCallBack = () =>
+                {
+                    zpose = _zCore.GetTargetPose(ZCore.TargetType.Primary, ZCore.CoordinateSpace.World);
+                    UPose pose = new UPose();
+                    pose.Position = zpose.Position;
+                    pose.Rotation = zpose.Rotation;
+                    pose.Direction = zpose.Direction;                  
+                    return pose;
+                };
+                
+nolo：            
+  UnityVrInput.ClickButton = (int m) =>
+                 {
+                 Dictionary<int, NoloButtonID> dic = new Dictionary<int, NoloButtonID>();
+                 dic.Add(0, NoloButtonID.Trigger); dic.Add(2, NoloButtonID.Grip); dic.Add(1, NoloButtonID.Menu);
+                 bool downbo = NoloVR_Controller.GetDevice(mtype).GetNoloButtonDown(dic[m]);
+                 bool upbo = NoloVR_Controller.GetDevice(mtype).GetNoloButtonUp(dic[m]);
+                 info.id = m;
+                 if (downbo) info.down = true; if (upbo)info.down = false;               
+                 return info;
+                 };
+                 
+HTCVIVE ：  
+待完善
