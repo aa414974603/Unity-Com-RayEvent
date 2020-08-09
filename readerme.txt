@@ -17,7 +17,7 @@ UnityVrInput.ClickButton = (int m) =>{
               };
  UnityVrInput.UPosCallBack = () =>
                 {
-                    zpose = _zCore.GetTargetPose(ZCore.TargetType.Primary, ZCore.CoordinateSpace.World);
+                 ZCore.Pose  zpose = _zCore.GetTargetPose(ZCore.TargetType.Primary, ZCore.CoordinateSpace.World);
                     UPose pose = new UPose();
                     pose.Position = zpose.Position;
                     pose.Rotation = zpose.Rotation;
@@ -36,6 +36,15 @@ nolo：
                  if (downbo) info.down = true; if (upbo)info.down = false;               
                  return info;
                  };
+   UnityVrInput.UPosCallBack = () =>
+                {
+                    Nolo_Transform npose=     NoloVR_Controller.GetDevice(NoloDeviceType.Hmd).GetPose();
+                    UPose pose = new UPose();
+                    pose.Position = npose.pos;
+                    pose.Rotation = npose.rot;
+                    pose.Direction = npose.vecVelocity;
+                    return pose;
+                };
                  
 HTCVIVE ：  
 待完善
