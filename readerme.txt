@@ -1,3 +1,11 @@
+通过预留接口绑定VR自定义输入及头盔姿势实现事件及姿势
+结构
+UnityVR
+        ----UnityVrInput
+        ----UPose
+        ----UInfo
+        ----RayType
+
 zCore:
 
 UnityVrInput.ClickButton = (int m) =>{
